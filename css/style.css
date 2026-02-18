@@ -1,0 +1,129 @@
+/* Gaya Dasar */
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: #333;
+}
+
+.app-container {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0;
+    color: #2d3436;
+    font-size: 24px;
+}
+
+header p {
+    color: #636e72;
+    font-size: 14px;
+}
+
+/* Form Styling */
+#todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input {
+    padding: 12px 15px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #6c5ce7;
+}
+
+button#add-btn {
+    padding: 12px;
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button#add-btn:hover {
+    background-color: #a29bfe;
+}
+
+/* Filter Section */
+.filter-section {
+    margin: 20px 0;
+}
+
+#filter-input {
+    width: 93%;
+    border-radius: 25px;
+    background-color: #f8f9fa;
+}
+
+/* List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ffffff;
+    border: 1px solid #f1f2f6;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+li div strong {
+    display: block;
+    color: #2d3436;
+}
+
+li div small {
+    color: #b2bec3;
+}
+
+.delete-btn {
+    background-color: #ff7675;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #d63031;
+}
