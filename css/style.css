@@ -1,129 +1,95 @@
-/* Gaya Dasar */
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 50%, #f78ca0 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    color: #333;
 }
 
-.app-container {
-    background: white;
+.main-card {
+    background: rgba(255, 255, 255, 0.95);
     width: 90%;
-    max-width: 450px;
+    max-width: 500px;
     padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
 
-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
+header { text-align: center; margin-bottom: 25px; }
+header h1 { color: #2c3e50; margin: 0; font-size: 28px; }
+header p { color: #e67e22; font-weight: 600; font-size: 14px; }
 
-header h1 {
-    margin: 0;
-    color: #2d3436;
-    font-size: 24px;
-}
-
-header p {
-    color: #636e72;
-    font-size: 14px;
-}
-
-/* Form Styling */
-#todo-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+#todo-form { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
 
 input {
-    padding: 12px 15px;
-    border: 2px solid #edf2f7;
-    border-radius: 10px;
+    padding: 12px 18px;
+    border: 2px solid #eee;
+    border-radius: 15px;
     outline: none;
     transition: 0.3s;
 }
 
-input:focus {
-    border-color: #6c5ce7;
-}
+input:focus { border-color: #74ebd5; box-shadow: 0 0 10px rgba(116, 235, 213, 0.3); }
+
+.row { display: flex; gap: 10px; }
+.row input { flex: 1; }
 
 button#add-btn {
-    padding: 12px;
-    background-color: #6c5ce7;
+    background: #7d5fff;
     color: white;
     border: none;
-    border-radius: 10px;
-    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 15px;
+    font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
 }
 
-button#add-btn:hover {
-    background-color: #a29bfe;
-}
+button#add-btn:hover { background: #5d3df5; transform: scale(1.05); }
 
-/* Filter Section */
-.filter-section {
-    margin: 20px 0;
-}
-
-#filter-input {
-    width: 93%;
-    border-radius: 25px;
-    background-color: #f8f9fa;
-}
-
-/* List Styling */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background: #ffffff;
-    border: 1px solid #f1f2f6;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 10px;
+.filter-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    animation: fadeIn 0.4s ease;
+    margin-bottom: 15px;
+    background: #fdf2e9;
+    padding: 10px;
+    border-radius: 20px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+#filter-input { border: none; background: transparent; width: 60%; }
+.stats { font-size: 13px; font-weight: bold; color: #636e72; }
+
+#todo-list { list-style: none; padding: 0; }
+
+li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-left: 6px solid #74ebd5; /* Aksen warna kiri */
+    transition: 0.3s;
 }
 
-li div strong {
-    display: block;
-    color: #2d3436;
-}
+/* Warna berbeda untuk setiap baris */
+li:nth-child(even) { border-left-color: #f78ca0; }
 
-li div small {
-    color: #b2bec3;
-}
+.task-text { cursor: pointer; flex: 1; }
+.task-text.done { text-decoration: line-through; color: #b2bec3; }
 
 .delete-btn {
-    background-color: #ff7675;
+    background: #ff7675;
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 8px 15px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 12px;
-    transition: 0.2s;
 }
 
-.delete-btn:hover {
-    background-color: #d63031;
-}
+.delete-btn:hover { background: #d63031; }

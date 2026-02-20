@@ -4,59 +4,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const todoInput = document.getElementById('todo-input');
     const dateInput = document.getElementById('date-input');
     const filterInput = document.getElementById('filter-input');
+    const totalCount = document.getElementById('total-count');
 
-    // 1. FITUR TAMBAH (ADD) & VALIDASI
+    function updateCounter() {
+        totalCount.innerText = todoList.children.length;
+    }
+
+    // 1. ADD & VALIDASI
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // Validasi: Mencegah input kosong
-        if (todoInput.value.trim() === "" || dateInput.value === "") {
-            alert("Harap isi deskripsi tugas dan tanggal!");
-            return;
-        }
-
-        createTodoElement(todoInput.value, dateInput.value);
-        form.reset(); // Mengosongkan form setelah input
-    });
-
-    function createTodoElement(task, date) {
-        const li = document.createElement('li');
         
-        // Struktur list yang rapi dengan tombol hapus
+        const li = document.createElement('li');
         li.innerHTML = `
-            <div>
-                <strong>${task}</strong>
-                <small>${date}</small>
+            <div class="task-text">
+                <strong>${todoInput.value}</strong><br>
+                <small>${dateInput.value}</small>
             </div>
             <button class="delete-btn">Hapus</button>
         `;
 
-        todoList.appendChild(li);
-    }
+        // Fitur Tambahan: Mark as Done
+        li.querySelector('.task-text').addEventListener('click', function() {
+            this.classList.toggle('done');
+        });
 
-    // 2. FITUR HAPUS (DELETE) DENGAN KONFIRMASI
-    todoList.addEventListener('click', (e) => {
-        if (e.target.classList.contains('delete-btn')) {
-            // Tambahan fitur keamanan agar tidak sengaja terhapus
-            if (confirm("Apakah Anda yakin ingin menghapus tugas ini?")) {
-                e.target.parentElement.remove();
+        // 2. DELETE
+        li.querySelector('.delete-btn').addEventListener('click', () => {
+            if(confirm("Hapus tugas ini?")) {
+                li.remove();
+                updateCounter();
             }
-        }
+        });
+
+        todoList.appendChild(li);
+        updateCounter();
+        form.reset();
     });
 
-    // 3. FITUR CARI (FILTER)
+    // 3. FILTER
     filterInput.addEventListener('keyup', (e) => {
-        const searchText = e.target.value.toLowerCase();
-        const tasks = todoList.getElementsByTagName('li');
-
-        Array.from(tasks).forEach((task) => {
-            const taskText = task.textContent.toLowerCase();
-            // Logika menyaring daftar berdasarkan teks
-            if (taskText.indexOf(searchText) !== -1) {
-                task.style.display = 'flex';
-            } else {
-                task.style.display = 'none';
-            }
+        const text = e.target.value.toLowerCase();
+        const items = todoList.getElementsByTagName('li');
+        Array.from(items).forEach(item => {
+            const taskContent = item.textContent.toLowerCase();
+            item.style.display = taskContent.includes(text) ? 'flex' : 'none';
         });
     });
 });
